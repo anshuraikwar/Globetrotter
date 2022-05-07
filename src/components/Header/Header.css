@@ -1,0 +1,537 @@
+/* 
+cubic-bezier(.25,.46,.45,.94) - button tiles
+cubic-bezier(.77,0,.175,1) - width
+*/
+
+/* HEADER */
+.header-comp {
+  width: 100vw;
+  height: 100vh;
+
+  color: white;
+  user-select: none;
+
+  transition: height 1s cubic-bezier(.77,0,.175,1);
+
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}
+.layout.extend_true .header-comp {
+  height: 0px;
+}
+
+
+.bdr-fr {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  overflow: hidden;
+
+  position: relative;
+}
+.header > .ver-align {
+  padding-top: 10%; 
+  z-index: 2;
+}
+.header > .ver-align,
+.header .title {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title .h1-cont,
+.title .h3-cont {
+  width: 100%;
+
+  position: relative;
+  overflow: hidden;
+}
+.title .h1-cont {
+  height: 1.178em;
+
+  font-size: 55px;
+  line-height: 1.16em;
+}
+.title .h1,
+.title .h3 {
+  position: absolute;
+
+  max-height: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  transition: max-height 0.6s ease-in-out 0.1s;
+
+  overflow: hidden;
+}
+.title.next .h1,
+.title.back .h3 {
+  top: 0;
+  align-items: end;
+}
+.title.back .h1,
+.title.next .h3 {
+  bottom: 0;
+  align-items: start;
+}
+
+.title.maldives .h1.maldives,
+.title.dolomites .h1.dolomites,
+.title.highlands .h1.highlands,
+.title.sahara .h1.sahara,
+.title.yosemite .h1.yosemite,
+.title.maldives .h3.maldives,
+.title.dolomites .h3.dolomites,
+.title.highlands .h3.highlands,
+.title.sahara .h3.sahara,
+.title.yosemite .h3.yosemite {
+  transition-delay: 0.3s;
+}
+.title.maldives .h1.maldives,
+.title.dolomites .h1.dolomites,
+.title.highlands .h1.highlands,
+.title.sahara .h1.sahara,
+.title.yosemite .h1.yosemite {
+  max-height: 1.56em;
+}
+.title.maldives .h3.maldives,
+.title.dolomites .h3.dolomites,
+.title.highlands .h3.highlands,
+.title.sahara .h3.sahara,
+.title.yosemite .h3.yosemite {
+  max-height: 1.38em;
+}
+
+.title.maldives.next .h1.maldives,
+.title.dolomites.next .h1.dolomites,
+.title.highlands.next .h1.highlands,
+.title.sahara.next .h1.sahara,
+.title.yosemite.next .h1.yosemite,
+.title.maldives.back .h3.maldives,
+.title.dolomites.back .h3.dolomites,
+.title.highlands.back .h3.highlands,
+.title.sahara.back .h3.sahara,
+.title.yosemite.back .h3.yosemite {
+  top: unset;
+  bottom: 0; 
+
+  align-items: start;
+}
+.title.maldives.back .h1.maldives,
+.title.dolomites.back .h1.dolomites,
+.title.highlands.back .h1.highlands,
+.title.sahara.back .h1.sahara,
+.title.yosemite.back .h1.yosemite,
+.title.maldives.next .h3.maldives,
+.title.dolomites.next .h3.dolomites,
+.title.highlands.next .h3.highlands,
+.title.sahara.next .h3.sahara,
+.title.yosemite.next .h3.yosemite {
+  bottom: unset;
+  top: 0; 
+
+  align-items: end;
+}
+
+.title h1 { 
+  font-family: 'OPTIBakerDanmarkOne', serif;
+  font-size: inherit;
+  font-weight: 300;
+  letter-spacing: 1.82em;
+  text-indent: 1.82em;
+  text-align: center;
+}
+
+
+.title .seperator {
+  width: 28.5vw;
+  margin: 23px 0 34px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.title .h3-cont {
+  height: 1.167em;
+  font-size: 18px;
+}
+.title h3 {
+  font-size: inherit;
+  font-weight: 500;
+  line-height: 1.167em;
+  letter-spacing: 1.46em;
+  text-indent: 1.46em;
+}
+
+.header .btn-tray {
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.header .btn-tray .seperator {
+  height: 60px;
+  margin: 0 8px;
+  border-right: 2px solid rgba(255, 255, 255, 0.5);
+}
+.btn-tray .btn {
+  height: 60px;
+  padding: 0 30px;
+
+  display: flex;
+  align-items: center;
+}
+.btn-tray .btn svg {
+  height: auto;
+}
+
+.layout.disable_false .btn-tray .btn {
+  cursor: pointer;
+}
+.layout.disable_true .btn-tray .btn {
+  opacity: 0.5;
+  cursor: default;
+}
+
+
+.header .background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layer {
+    position: absolute;
+    overflow: hidden;
+}
+.layer .image {  
+  background-size: auto calc(max(100vw, 100vh) * 1.41);
+  background-position: center;
+
+  transition: opacity 0.2s;
+  opacity: 0;
+  z-index: 1;
+}
+
+
+.filter,
+.layer .image {
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+} 
+.filter {
+  z-index: 2;
+}
+
+.layer3 {
+  width: calc(max(100vw, 100vh) * 1.41);
+  height: calc(max(100vw, 100vh) * 1.41);
+  animation-delay: 0.3s;
+  z-index: 1;
+}
+.layer3 .image { 
+  transition-delay: 0.5s; 
+}
+.layer3 .filter { background: rgba(0, 0, 0, 0.15); }
+
+.layer2,
+.layer1 {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.layer2 {
+  width: max(85vw, 85vh);
+  height: max(85vw, 85vh);
+  animation-delay: 0.15s;
+  z-index: 2;
+}
+.layer2 .image { 
+  transition-delay: 0.4s; 
+}
+.layer2 .filter { background: rgba(0, 0, 0, 0.30); }
+
+.layer1 {
+  width: max(44vw, 44vh);
+  height: max(44vw, 44vh);
+
+  z-index: 3;
+}
+.layer1 .image { transition-delay: 0.3s; }
+.layer1 .filter { background: rgba(0, 0, 0, 0.20); }
+
+.rotate .layer,
+.rotate .image {
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+.rotate.next .layer { animation-name: rotation_forward; }
+.rotate.back .layer { animation-name: rotation_backward; }
+.rotate .image { animation-name: zoom; }
+
+@keyframes rotation_forward {
+  0% { -webkit-transform: rotateZ(0deg); }
+  100% { -webkit-transform: rotateZ(360deg); }
+}
+@keyframes rotation_backward {
+  0% { -webkit-transform: rotateZ(0deg); }
+  100% { -webkit-transform: rotateZ(-360deg); }
+}
+@keyframes zoom {
+  10% { transform: scale(1.0); }
+  70% { transform: scale(2.0); }
+  100% { transform: scale(1.0); }
+}
+
+.image.maldives { background-image: url('https://images.unsplash.com/photo-1484821582734-6c6c9f99a672?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80'); } 
+.image.dolomites { background-image: url('https://images.unsplash.com/photo-1609342122563-a43ac8917a3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80'); } 
+.image.highlands { background-image: url('https://images.unsplash.com/photo-1526215863741-4e223bc0c5a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80'); } 
+.image.sahara { background-image: url('https://images.unsplash.com/photo-1541256123332-c1c9d0a59dee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80'); } 
+.image.yosemite { background-image: url('https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80'); } 
+
+.background.maldives .image.maldives,
+.background.dolomites .image.dolomites,
+.background.highlands .image.highlands,
+.background.sahara .image.sahara,
+.background.yosemite .image.yosemite { opacity: 1; }
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 1920px) {
+  .title .h1-cont {
+    font-size: 73px;
+  }
+
+  .title .seperator {
+    margin: 30px 0 45px;
+    border-bottom-width: 1.5px;
+  }
+
+  .title .h3-cont {
+    font-size: 24px;
+  }
+  
+  .header .btn-tray {
+    margin-top: 42px;
+  }
+  .header .btn-tray .seperator {
+    height: 77px;
+    margin: 0 10px;
+  }
+  .btn-tray .btn {
+    height: 77px;
+    padding: 0 35px;
+  }
+  .btn-tray .btn svg {
+    width: 35px;
+  }
+}
+@media only screen and (min-width: 1600px) and (max-width: 1920px) {
+  .title .h1-cont {
+    font-size: 61px;
+  }
+
+  .title .seperator {
+    margin: 25px 0 38px;
+    border-bottom-width: 1px;
+  }
+
+  .title .h3-cont {
+    font-size: 20px;
+  }
+  
+  .header .btn-tray {
+    margin-top: 35px;
+  }
+  .header .btn-tray .seperator {
+    height: 65px;
+    margin: 0 8px;
+  }
+  .btn-tray .btn {
+    height: 65px;
+    padding: 0 30px;
+  }
+  .btn-tray .btn svg {
+    width: 30px;
+  }
+
+}
+/* @media only screen and (min-width: 1280px) and (max-width: 1600px) { */
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .title .h1-cont {
+    font-size: 48px;
+  }
+
+  .title .seperator {
+    margin: 20px 0 30px;
+  }
+
+  .title .h3-cont {
+    font-size: 16px;
+  }
+  
+  .header .btn-tray {
+    margin-top: 28px;
+  }
+  .header .btn-tray .seperator {
+    height: 50px;
+    margin: 0 10px;
+  }
+  .btn-tray .btn {
+    height: 50px;
+    padding: 0 25px;
+  }
+  .btn-tray .btn svg {
+    width: 30px;
+  }
+
+}
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+  .title .h1-cont {
+    font-size: 40px;
+  }
+
+  .title .seperator {
+    margin: 15px 0 25px;
+  }
+
+  .title .h3-cont {
+    font-size: 13px;
+  }
+  
+  .header .btn-tray {
+    margin-top: 23px;
+  }
+  .header .btn-tray .seperator {
+    height: 42px;
+    margin: 0 10px;
+  }
+  .btn-tray .btn {
+    height: 42px;
+    padding: 0 20px;
+  }
+  .btn-tray .btn svg {
+    width: 30px;
+  }
+
+
+}
+@media only screen and (min-width: 760px) and (max-width: 1024px) {
+  .title .h1-cont {
+    font-size: 30px;
+  }
+
+  .title .seperator {
+    width: 45vw;
+    margin: 11px 0 18px;
+  }
+
+  .title .h3-cont {
+    font-size: 11px;
+  }
+  
+  .header .btn-tray {
+    margin-top: 18px;
+  }
+  .header .btn-tray .seperator {
+    height: 30px;
+    margin: 0 10px;
+  }
+  .btn-tray .btn {
+    height: 30px;
+    padding: 0 15px;
+  }
+  .btn-tray .btn svg {
+    width: 30px;
+  }
+}
+@media only screen and (max-width: 760px) {
+  .header > .ver-align {
+    padding-top: 10%;
+  }
+  .title .h1-cont {
+    font-size: 24px;
+  }
+  .title h1 { 
+    font-weight: 600;
+    letter-spacing: 1em;
+    text-indent: 1em;
+  }
+  
+
+  .title .seperator {
+    width: 60vw;
+    margin: 18px 0 16px;
+  }
+
+  .title .h3-cont {
+    font-size: 10px;
+  }
+  
+  .header .btn-tray {
+    margin-top: 50px;
+  }
+  .header .btn-tray .seperator {
+    height: 35px;
+    margin: 0 10px;
+  }
+  .btn-tray .btn {
+    height: 35px;
+    padding: 0 15px;
+  }
+  .btn-tray .btn svg {
+    width: 20px;
+  }
+}
+
+
+@media only screen and (max-height: 760px) {
+  .header > .ver-align {
+    padding-top: 0; 
+    margin-top: -10px;
+  }
+  .header .btn-tray {
+    margin-top: 20px;
+  }
+}
