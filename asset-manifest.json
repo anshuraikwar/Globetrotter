@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/Globetrotter/static/css/main.d9041010.css",
-    "main.js": "/Globetrotter/static/js/main.815eca7c.js",
+    "main.css": "/Globetrotter/static/css/main.055fd93a.css",
+    "main.js": "/Globetrotter/static/js/main.700a6fb0.js",
     "static/js/787.713a9471.chunk.js": "/Globetrotter/static/js/787.713a9471.chunk.js",
     "static/media/background.jpg": "/Globetrotter/static/media/background.23c1a69bad2d912fc573.jpg",
+    "static/media/Roboto-Regular.ttf": "/Globetrotter/static/media/Roboto-Regular.6bede58e856278b0f8f1.ttf",
+    "static/media/Roboto-Light.ttf": "/Globetrotter/static/media/Roboto-Light.ce61b8b68994802f2e55.ttf",
     "static/media/OPTIBakerDanmarkOne.ttf": "/Globetrotter/static/media/OPTIBakerDanmarkOne.d86dad96de23a186b890.ttf",
     "static/media/BloomingElegantSans-Bold.ttf": "/Globetrotter/static/media/BloomingElegantSans-Bold.e8e7e73fb627ce0dac19.ttf",
     "static/media/spinning_globe.gif": "/Globetrotter/static/media/spinning_globe.ed44e16d2084b916eaa3.gif",
@@ -11,12 +13,12 @@
     "static/media/search.svg": "/Globetrotter/static/media/search.bb5db946c3e3e08db7b15e1470908f71.svg",
     "static/media/cross.svg": "/Globetrotter/static/media/cross.f0961dccfc958e54a95b15d99b0778bf.svg",
     "static/media/arrow.svg": "/Globetrotter/static/media/arrow.990b7db68e9854c3e1c2c6c8e42447e6.svg",
-    "main.d9041010.css.map": "/Globetrotter/static/css/main.d9041010.css.map",
-    "main.815eca7c.js.map": "/Globetrotter/static/js/main.815eca7c.js.map",
+    "main.055fd93a.css.map": "/Globetrotter/static/css/main.055fd93a.css.map",
+    "main.700a6fb0.js.map": "/Globetrotter/static/js/main.700a6fb0.js.map",
     "787.713a9471.chunk.js.map": "/Globetrotter/static/js/787.713a9471.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d9041010.css",
-    "static/js/main.815eca7c.js"
+    "static/css/main.055fd93a.css",
+    "static/js/main.700a6fb0.js"
   ]
 }
