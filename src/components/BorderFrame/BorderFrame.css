@@ -654,9 +654,9 @@
     .back-div {
         top: 35px;
         left: unset;
-        right: 10px;
+        right: 0px;
     }
-    .layout.extend_true .back-div { left: unset; right: 35px; }
+    .layout.extend_true .back-div { left: unset; right: 20px; }
     .back-div .dash {
         width: 35px;
         margin: 0 15px;
