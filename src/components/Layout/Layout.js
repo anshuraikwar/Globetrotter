@@ -9,7 +9,7 @@ import Content from '../Content/Content';
 
 import cross_icon from '../../assets/svg/cross.svg'
 import arrow_icon from '../../assets/svg/arrow.svg'
-import {ReactComponent as Search_icon} from '../../assets/svg/search.svg'
+import {ReactComponent as SearchIcon} from '../../assets/svg/search.svg'
 import loader from '../../assets/svg/spinning_globe.gif'
 
 import maldives_bg from '../../assets/img/maldives/background.jpg';
@@ -188,7 +188,7 @@ export default class Layout extends Component {
         })
     }
     toggleMenuCounter = (val) => {
-        if(this.state.menuCounter == val) val=false
+        if(this.state.menuCounter === val) val=false
         this.setState({ menuCounter: val })
         if(!val) this.setState({ searchQuery: "" })
         if(!this.state.openMenu) this.setState({ openMenu: true })
@@ -251,7 +251,7 @@ export default class Layout extends Component {
 
     
     render() {
-        const {counter, list, rotate, disableButtons, loading, mountContent, extend, backgrounds, yBound, openCredits, openMenu, menuCounter, filterDestIndices, searchQuery} = this.state
+        const {counter, list, rotate, disableButtons, loading, mountContent, extend, backgrounds, yBound, openCredits, openMenu, menuCounter, searchQuery} = this.state
         
         return (
             <div className="layout-wrapper">
@@ -305,14 +305,14 @@ export default class Layout extends Component {
                             <div className='cls-btn-cont'> 
                                 <img src={cross_icon} alt="" onClick={(e) => { e.stopPropagation(); this.toggleMenu() }}/> 
                             </div>
-                            <div className={`option open_${menuCounter==1}`}> 
+                            <div className={`option open_${menuCounter===1}`}> 
                                 <div className='text cursor-pointer' onClick={() => { this.toggleMenuCounter(1) }}> 
                                     <span>LIST ALL DESTINATIONS</span> 
                                     <img src={arrow_icon} alt=""/> 
                                 </div> 
                                 <div className={`destList`}> {this.getDestList([0,1,2,3,4])} </div>
                             </div>
-                            <div className={`option open_${menuCounter==2}`}> 
+                            <div className={`option open_${menuCounter===2}`}> 
                                 <div className='text cursor-pointer' onClick={() => { this.toggleMenuCounter(2) }}> 
                                     <span>SEARCH</span> 
                                     <img src={arrow_icon} alt=""/>  
@@ -320,7 +320,7 @@ export default class Layout extends Component {
                                 <div className={`destList`}> 
                                     <div className='search-in-cont'>
                                         <input className='search-in' value={searchQuery} onChange={(e) => this.onSearchQueryChange(e)}></input>
-                                        <Search_icon/>
+                                        <SearchIcon/>
                                     </div> 
                                     {this.filterDest()} 
                                 </div>
@@ -331,7 +331,7 @@ export default class Layout extends Component {
                                     <span>SHARE</span> 
                                 </div> 
                             </div>
-                            <div className={`option menu-crd-btn open_${menuCounter==4}`}> 
+                            <div className={`option menu-crd-btn open_${menuCounter===4}`}> 
                                 <div className='text cursor-pointer' onClick={() => { this.toggleMenuCounter(4) }}> 
                                     <span>CREDITS</span> 
                                     <img src={arrow_icon} alt=""/> 

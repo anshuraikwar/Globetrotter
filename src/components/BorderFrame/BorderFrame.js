@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./BorderFrame.css"
 
-import {ReactComponent as Search_icon} from '../../assets/svg/search.svg'
+import {ReactComponent as SearchIcon} from '../../assets/svg/search.svg'
 import spinning_globe from '../../assets/svg/spinning_globe.gif'
 
 export default class BorderFrame extends Component {
@@ -48,12 +48,12 @@ export default class BorderFrame extends Component {
                                 </div> 
                                 <div className='search-results'>
                                     <div className='result-list'>
-                                        {menuCounter == 1 ? this.props.getDestList([0,1,2,3,4]) : this.props.filterDest()}
+                                        {menuCounter === 1 ? this.props.getDestList([0,1,2,3,4]) : this.props.filterDest()}
                                     </div> 
                                 </div>
                             </div>
                             <div className='search-btn' onClick={() => {this.props.toggleMenuCounter(2)}}>
-                                <Search_icon/>
+                                <SearchIcon/>
                             </div>
                         </div>
                     </div>

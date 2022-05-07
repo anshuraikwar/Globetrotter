@@ -56,7 +56,7 @@ export default class Content extends Component {
         var IMAGES = [], imgNum = 1
         var { counter } = this.props
         data[counter]['rows'].map((row, ri) => {
-            if(ri != 1) 
+            if(ri !== 1) 
                 row.map((column, ci) => {
                     column.map((ele, ei) => {
                         var id = ((ri+1)*100)+((ci+1)*10)+(ei+1)
@@ -82,6 +82,7 @@ export default class Content extends Component {
                                 </div>
                             )
                         }
+                        return null
                     })
                     return null
                 })
