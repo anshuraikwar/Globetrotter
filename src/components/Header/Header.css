@@ -1,4 +1,4 @@
-/* 
+/*
 cubic-bezier(.25,.46,.45,.94) - button tiles
 cubic-bezier(.77,0,.175,1) - width
 */
@@ -18,7 +18,7 @@ cubic-bezier(.77,0,.175,1) - width
   z-index: 5;
 }
 .layout.extend_true .header-comp {
-  height: 0px;
+  height: 0;
 }
 
 
@@ -230,6 +230,32 @@ cubic-bezier(.77,0,.175,1) - width
   justify-content: center;
 }
 
+:root {
+  --layer-rotation-a-delay: 0.2s;
+  --layer-rotation-a-duration: 1.8s;
+  --img-zoom-a-delay: calc(2 * var(--layer-rotation-a-delay));
+  /*  - wait for initiation of all 3 layers rotation animation
+        to start sync zoom animation
+  */
+  --img-zoom-a-duration: calc(var(--layer-rotation-a-duration) - (2 * var(--img-zoom-a-delay)));
+  /*
+       =======(start)=======-====== rotation (1.8s) =====-=======(end)========
+                             ======== zoom (1s) =========
+      |__(0.2s)__|__(0.2s)__|_______|___(0.5s)___|_______|__(0.2s)__|__(0.2s)__|
+     (l1)       (l2)       (l3)      (img-change)      (l1)       (l2)       (l3)
+   */
+
+  --img-change-t-duration: 0.5s;
+
+  --layer-1-img-change-t-delay: calc((var(--layer-rotation-a-duration) / 2) - (var(--img-change-t-duration) / 2));
+
+  --layer-2-animation-delay: var(--layer-rotation-a-delay);
+  --layer-2-img-change-t-delay: calc(var(--layer-1-img-change-t-delay) + var(--layer-2-animation-delay));
+
+  --layer-3-animation-delay: calc(2 * var(--layer-2-animation-delay));
+  --layer-3-img-change-t-delay: calc(var(--layer-1-img-change-t-delay) + var(--layer-3-animation-delay));;
+}
+
 .layer {
     position: absolute;
     overflow: hidden;
@@ -238,7 +264,7 @@ cubic-bezier(.77,0,.175,1) - width
   background-size: auto calc(max(100vw, 100vh) * 1.41);
   background-position: center;
 
-  transition: opacity 0.2s;
+  transition: opacity var(--img-change-t-duration);
   opacity: 0;
   z-index: 1;
 }
@@ -258,11 +284,12 @@ cubic-bezier(.77,0,.175,1) - width
 .layer3 {
   width: calc(max(100vw, 100vh) * 1.41);
   height: calc(max(100vw, 100vh) * 1.41);
-  animation-delay: 0.3s;
+  animation-delay: var(--layer-3-animation-delay);
   z-index: 1;
+  overflow: visible;
 }
 .layer3 .image { 
-  transition-delay: 0.5s; 
+  transition-delay: var(--layer-3-img-change-t-delay);
 }
 .layer3 .filter { background: rgba(0, 0, 0, 0.15); }
 
@@ -275,11 +302,11 @@ cubic-bezier(.77,0,.175,1) - width
 .layer2 {
   width: max(85vw, 85vh);
   height: max(85vw, 85vh);
-  animation-delay: 0.15s;
+  animation-delay: var(--layer-2-animation-delay);
   z-index: 2;
 }
 .layer2 .image { 
-  transition-delay: 0.4s; 
+  transition-delay: var(--layer-2-img-change-t-delay);
 }
 .layer2 .filter { background: rgba(0, 0, 0, 0.30); }
 
@@ -289,21 +316,29 @@ cubic-bezier(.77,0,.175,1) - width
 
   z-index: 3;
 }
-.layer1 .image { transition-delay: 0.3s; }
+.layer1 .image { transition-delay: var(--layer-1-img-change-t-delay); }
 .layer1 .filter { background: rgba(0, 0, 0, 0.20); }
 
 .rotate .layer,
 .rotate .image {
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
   animation-direction: normal;
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
+.rotate.next .layer,
+.rotate.back .layer {
+  animation-duration: var(--layer-rotation-a-duration);
+  animation-timing-function: cubic-bezier(.6,0,.4,1);
+}
 .rotate.next .layer { animation-name: rotation_forward; }
 .rotate.back .layer { animation-name: rotation_backward; }
-.rotate .image { animation-name: zoom; }
+.rotate .image {
+  animation-duration: var(--img-zoom-a-duration);
+  animation-delay: var(--img-zoom-a-delay);
+  animation-timing-function: ease-in-out;
+  animation-name: zoom;
+}
 
 @keyframes rotation_forward {
   0% { -webkit-transform: rotateZ(0deg); }
@@ -315,28 +350,21 @@ cubic-bezier(.77,0,.175,1) - width
 }
 @keyframes zoom {
   10% { transform: scale(1.0); }
-  70% { transform: scale(2.0); }
+  50% { transform: scale(2.0); }
   100% { transform: scale(1.0); }
 }
 
-.image.maldives { background-image: url('https://images.unsplash.com/photo-1484821582734-6c6c9f99a672?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80'); } 
-.image.dolomites { background-image: url('https://images.unsplash.com/photo-1609342122563-a43ac8917a3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80'); } 
-.image.highlands { background-image: url('https://images.unsplash.com/photo-1526215863741-4e223bc0c5a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80'); } 
-.image.sahara { background-image: url('https://images.unsplash.com/photo-1541256123332-c1c9d0a59dee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80'); } 
-.image.yosemite { background-image: url('https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80'); } 
+.image.maldives { background-image: url('../../assets/img/maldives/header.jpg'); }
+.image.dolomites { background-image: url('../../assets/img/dolomites/header.jpg'); }
+.image.highlands { background-image: url('../../assets/img/highlands/header.jpg'); }
+.image.sahara { background-image: url('../../assets/img/sahara/header.jpg'); }
+.image.yosemite { background-image: url('../../assets/img/yosemite valley/header.jpg'); }
 
 .background.maldives .image.maldives,
 .background.dolomites .image.dolomites,
 .background.highlands .image.highlands,
 .background.sahara .image.sahara,
 .background.yosemite .image.yosemite { opacity: 1; }
-
-
-
-
-
-
-
 
 @media only screen and (min-width: 1920px) {
   .title .h1-cont {
@@ -397,7 +425,6 @@ cubic-bezier(.77,0,.175,1) - width
   }
 
 }
-/* @media only screen and (min-width: 1280px) and (max-width: 1600px) { */
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
   .title .h1-cont {
     font-size: 48px;
@@ -498,7 +525,6 @@ cubic-bezier(.77,0,.175,1) - width
     letter-spacing: 1em;
     text-indent: 1em;
   }
-  
 
   .title .seperator {
     width: 60vw;

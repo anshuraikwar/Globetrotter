@@ -23,7 +23,6 @@ export default class Layout extends Component {
     constructor(props) {
       super(props)
     
-        var content, background;
         this.state = {
             counter: 0,
             list: ["maldives", "dolomites", "highlands", "sahara", "yosemite"],
@@ -70,7 +69,7 @@ export default class Layout extends Component {
                     disableButtons: false,
                     loading: false
                 })
-                this.state.backgrounds.map((url, i) => {
+                this.state.backgrounds.map((url) => {
                     this.preLoadImage(url, () => {})
                     return null;
                 })
@@ -102,7 +101,7 @@ export default class Layout extends Component {
                     rotate: false,
                     disableButtons: false
                 })
-            }, 1500)
+            }, 3000)
         })
     }
 
@@ -156,7 +155,7 @@ export default class Layout extends Component {
         })
     }
 
-    onContentScroll = (e) => {
+    onContentScroll = () => {
         let BCR = this.content.getBoundingClientRect();
         var contentScrollOverflow = this.content.clientHeight - window.innerHeight
         var backgroundScrollOverflow = this.background.clientHeight - window.innerHeight
@@ -209,14 +208,16 @@ export default class Layout extends Component {
     }
     getDestList = (items) => {
         const { list, subTitles } = this.state
-        var DESTINATIONS = items.map((i) => {
-            return(
-                <div className='dest' key={list[i]} onClick={() => { this.preSetImgCounterFromMenu(i) }}>
-                    <div className='t'>{list[i].toUpperCase()}</div>
-                    <div className='st'>{subTitles[i]}</div>
-                </div>
+        const DESTINATIONS = items.map((i) => {
+            return (
+              <div className='dest' key={list[i]} onClick={() => {
+                  this.preSetImgCounterFromMenu(i)
+              }}>
+                  <div className='t'>{list[i].toUpperCase()}</div>
+                  <div className='st'>{subTitles[i]}</div>
+              </div>
             )
-        })
+        });
         return DESTINATIONS
     }
     preSetImgCounterFromMenu = (new_counter) => {
